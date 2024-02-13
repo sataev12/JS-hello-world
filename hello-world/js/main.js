@@ -33,6 +33,8 @@ const ageJohn = 20;
 console.log("John est " + (ageJohn >= 18 ? "majeur" : "mineur") + " en France."); //concatenation
 console.log(`John est ${ageJohn >= 21 ? "majeur" : "mineur"} aux Etats-Unis.`); //interpolation
 
+//BOOCLE FOR
+
 for (let i = 0; i < 10; i++) {
     console.log(`3 x ${i} = ${3 * i}`);
 }
@@ -45,3 +47,33 @@ for (let i = 3; i < 10; i+= 3) {
     console.log(`${i} est inférieur ou égal à 10 et est divisible par 3`);
     
 }
+
+for (let  i = 5; i > 0; i--) {
+    console.log(`${i}....`);
+}
+console.log("Bonne année !");
+
+
+//BOOCLE WHILE
+
+let kAge = 12;
+while (kAge < 18) {
+    console.log(`J'ai maintenant ${kAge} ans ...`);
+    kAge++;
+}
+console.log(`J'ai finalement ${kAge} ans.`);
+
+---------------------------------------DOM---------------------------------- //
+
+
+const cube = document.querySelector('#hello');
+
+console.log(cube);
+
+cube.style.width = '200px';
+cube.style.height = '200px';
+cube.style.color = 'blue';
+cube.style.backgroundColor = 'green'
+cube.style.display = 'flex'
+cube.style.aligneItems = 'centre'
+
