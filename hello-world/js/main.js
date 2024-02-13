@@ -63,7 +63,7 @@ while (kAge < 18) {
 }
 console.log(`J'ai finalement ${kAge} ans.`);
 
----------------------------------------DOM---------------------------------- //
+//---------------------------------------DOM---------------------------------- //
 
 
 const cube = document.querySelector('#hello');
@@ -76,4 +76,102 @@ cube.style.color = 'blue';
 cube.style.backgroundColor = 'green'
 cube.style.display = 'flex'
 cube.style.aligneItems = 'centre'
+
+let list = document.querySelector("ul");
+
+let listElements = list.querySelectorAll("li");
+
+console.log("la liste", list);
+console.log("les éléments", listElements);
+
+listElements.forEach(function (element) {
+    element.style.color = "red";
+})
+
+listElements.forEach(function (element) {
+    console.dir(element);
+    element.style.color = "red";
+})
+
+//----------------------------------------------JEU---------------------------------------------------//
+
+function shuffleChildren(parent) {
+    let children = parent.children;
+    let i = children.length, k, temp;
+    while (--i > 0) {
+        k = Math.floor(Math.random() * (i+1))
+        temp = children[k]
+        children[k] = children[i]
+        parent.appendChild(temp)
+    }
+}
+
+function showReaction(type, clickedBox) {
+    clickedBox.classList.add(type)
+    if (type !== "success") {
+        setTimeout(function () {
+            clickedBox.classList.remove(type)
+        }, 800)
+    }
+}
+
+const box = document.createElement("div");
+box.classList.add("box");
+
+const board = document.querySelector("#board");
+
+
+let nb = 1;
+for (let i = 1; i <= 10; i++) {
+    let newbox = box.cloneNode();
+    newbox.innerText = i;
+    board.appendChild(newbox);
+
+    newbox.addEventListener("click", function () {
+        if (i == nb) {
+            newbox.classList.add("box-clicked");
+            // 1
+            if (nb == board.children.length) {
+                board.querySelectorAll(".box").forEach(function (box) {
+                    showReaction("success", box)
+                })
+            }
+            nb++;
+        }
+        //2
+        else if(i > nb){
+            showReaction("error", newbox)
+            nb = 1
+            board.querySelectorAll(".box-clicked").forEach(function(validBox){
+                validBox.classList.remove("box-clicked");
+            })
+        }
+        // 3
+        else{
+            showReaction("notice", newbox)
+        }
+    })
+}
+
+// let i = board.children.length, k , temp;
+// while(--i > 0){
+//     //on boucle tant que 1 oté de i est toujours positif
+//     // K stocke un nombre aléatoire basé sur i
+
+//     k = Math.floor(Math.random() * (i+1))
+
+//     // temp pointe temporairement l'élément k par l'élément à la position i 
+//     temp = board.children[k];
+//     // remplace l'élément à la position k par l'élément à la position i
+//     board.children[k] = board.children[i]
+
+//     // place l'élément k pointé temporairement à la fin du contenu de board
+//     board.appendChild(temp)
+
+//}
+
+shuffleChildren(board);
+
+
+
 
