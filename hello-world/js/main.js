@@ -66,32 +66,32 @@
 //---------------------------------------DOM---------------------------------- //
 
 
-const cube = document.querySelector('#hello');
+// const cube = document.querySelector('#hello');
 
-console.log(cube);
+// console.log(cube);
 
-cube.style.width = '200px';
-cube.style.height = '200px';
-cube.style.color = 'blue';
-cube.style.backgroundColor = 'green'
-cube.style.display = 'flex'
-cube.style.aligneItems = 'centre'
+// cube.style.width = '200px';
+// cube.style.height = '200px';
+// cube.style.color = 'blue';
+// cube.style.backgroundColor = 'green'
+// cube.style.display = 'flex'
+// cube.style.aligneItems = 'centre'
 
-let list = document.querySelector("ul");
+// let list = document.querySelector("ul");
 
-let listElements = list.querySelectorAll("li");
+// let listElements = list.querySelectorAll("li");
 
-console.log("la liste", list);
-console.log("les éléments", listElements);
+// console.log("la liste", list);
+// console.log("les éléments", listElements);
 
-listElements.forEach(function (element) {
-    element.style.color = "red";
-})
+// listElements.forEach(function (element) {
+//     element.style.color = "red";
+// })
 
-listElements.forEach(function (element) {
-    console.dir(element);
-    element.style.color = "red";
-})
+// listElements.forEach(function (element) {
+//     console.dir(element);
+//     element.style.color = "red";
+// })
 
 //----------------------------------------------JEU---------------------------------------------------//
 
@@ -141,6 +141,7 @@ for (let i = 1; i <= nbBoîtes; i++) {
         //2
         else if(i > nb){
             showReaction("error", newbox)
+            shuffleChildren(board);
             nb = 1
             board.querySelectorAll(".box-clicked").forEach(function(validBox){
                 validBox.classList.remove("box-clicked");
