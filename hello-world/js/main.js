@@ -130,6 +130,7 @@ for (let i = 1; i <= nbBoîtes; i++) {
     newbox.addEventListener("click", function () {
         if (i == nb) {
             newbox.classList.add("box-clicked");
+            shuffleChildren(board);
             // 1
             if (nb == board.children.length) {
                 board.querySelectorAll(".box").forEach(function (box) {
