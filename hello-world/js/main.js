@@ -95,6 +95,21 @@
 
 //----------------------------------------------JEU---------------------------------------------------//
 
+function demarrerTimer(){
+    tempsDebut = new Date();
+}
+
+function arreterTimer() {
+    let tempsFin = new Date();
+    tempsEcoule = tempsFin - tempsDebut; // Calculer le temps écoulé en millisecondes
+    const tempsEnSecondes = tempsEcoule / 1000;
+    const boxTemps = document.createElement('div');
+    board.appendChild(boxTemps);
+    boxTemps.innerHTML = `<div>temps ecoulé :  ${tempsEnSecondes} s</div>`;
+    
+   
+}
+
 function shuffleChildren(parent) {
     let children = parent.children;
     let i = children.length, k, temp;
@@ -115,27 +130,35 @@ function showReaction(type, clickedBox) {
     }
 }
 
+
+
 const box = document.createElement("div");
 box.classList.add("box");
 
 const board = document.querySelector("#board");
 
 let nbBoîtes = prompt("Entrez un nombre des boîtes :");
+let tempsDebut;
+let tempsEcoule;
+let tableauTemps = []
 let nb = 1;
 for (let i = 1; i <= nbBoîtes; i++) {
     let newbox = box.cloneNode();
     newbox.innerText = i;
     board.appendChild(newbox);
-
+    demarrerTimer()
     newbox.addEventListener("click", function () {
         if (i == nb) {
             newbox.classList.add("box-clicked");
+    
             shuffleChildren(board);
             // 1
             if (nb == board.children.length) {
                 board.querySelectorAll(".box").forEach(function (box) {
                     showReaction("success", box)
+                    
                 })
+                arreterTimer()
             }
             nb++;
         }
